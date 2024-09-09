@@ -1,0 +1,111 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container" id="conta">
+    <h1>{{game.name}}</h1>
+    
+    
+      <div class="grid">
+        {% for i in moves %} {% if i.ty == 0 %}
+        <div
+          class="cell"
+          id="cell{{i.x}}"
+          onclick="sendmove(this, {{i.x}})"
+        ></div>
+        {% else %}
+        <div
+          class="cell"
+          id="cell{{i.x}}"
+          style="pointer-events: none"
+          onclick="sendmove(this, {{i.x}})"
+        >
+          {{i.ty}}
+        </div>
+        {% endif %} {% endfor %}
+      </div>
+    
+  
+  </div>
+
+
+<script>
+  let roomid = "{{game.id}}"
+ 
+  let url = 'ws://' + window.location.host + '/ws/game/' + roomid + '/';
+  
+    const gameSocket = new WebSocket(url)
+    var winnerFound = false;  
+
+    gameSocket.onmessage = function(e) {
+      let data = JSON.parse(e.data)
+      console.log(data);
+      console.log("rev");
+
+      if (data.type === 'move') {
+        const cell = document.getElementById(data['d']);
+        cell.style.pointerEvents = 'none';
+        cell.innerHTML = data['currnt_move'];
+        checkWinner();  
+        if (winnerFound) {
+       
+          const newElement = document.createElement('h1');
+          newElement.innerHTML = `Player ${data['currnt_move']} wins!`;
+
+        const conta = document.getElementById('conta');
+
+      conta.insertBefore(newElement, conta.firstChild);
+          setTimeout(() => {
+            alert(`Player ${data['currnt_move']} wins!`);
+          }, 100);
+
+        }
+      }
+    }
+
+    function sendmove(cell, x) {
+      console.log("sen");
+
+      gameSocket.send(JSON.stringify({
+        'x': x,
+        'currnt_move': "{{game.currnt_move}}",
+        'game': {{ game.id }},
+        'user': {{ request.user.id }},
+      }))
+    }
+
+   
+    function checkWinner() {
+     
+      let board = [];
+      for (let i = 1; i <= 9; i++) {
+        board[i] = document.getElementById(`cell${i}`).innerHTML;
+      }
+
+     
+      const winningCombinations = [
+        [1, 2, 3],  // الصف العلوي
+        [4, 5, 6],  // الصف الأوسط
+        [7, 8, 9],  // الصف السفلي
+        [1, 4, 7],  // العمود الأيسر
+        [2, 5, 8],  // العمود الأوسط
+        [3, 6, 9],  // العمود الأيمن
+        [1, 5, 9],  // القطر الأول
+        [3, 5, 7]   // القطر الثاني
+      ];
+
+      
+      for (let combo of winningCombinations) {
+        let [a, b, c] = combo;  
+        if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+          winnerFound = true;  
+          const cells = document.getElementsByClassName('cell');
+
+ 
+       for (let i = 0; i < cells.length; i++) {
+          cells[i].style.pointerEvents = 'none';
+           }
+          break;
+        }
+      }
+    }
+</script>
+
+{% endblock %}

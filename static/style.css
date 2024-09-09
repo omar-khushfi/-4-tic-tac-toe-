@@ -1,0 +1,318 @@
+/* إعدادات للجسم */
+body {
+  
+    height: 100vh;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #1E1E2F;
+    color: #E94560;
+    flex-direction: column;
+}
+
+/* إعدادات الرأس */
+header {
+    width: 100%;
+    background-color: #24243E;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: background-color 0.3s;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+}
+
+header input[type="text"] {
+    padding: 10px;
+    border: 2px solid #2A2A5E;
+    border-radius: 30px;
+    width: 250px;
+    font-size: 14px;
+    margin-right: 10px;
+    transition: border-color 0.3s;
+}
+
+header input[type="text"]:focus {
+    border-color: #E94560;
+}
+
+header button {
+    padding: 8px 20px;
+    background-color: #E94560;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+header button:hover {
+    background-color: #F07B9C;
+    transform: scale(1.1);
+}
+
+a {
+    color: #FFD700;
+    text-decoration: none;
+    font-size: larger;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #FFFFFF;
+}
+
+/* تحسين التنسيق الرئيسي */
+.container {
+    margin-top: 100px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #FFD700;
+    font-size: 2.5em;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 120px);
+    grid-template-rows: repeat(3, 120px);
+    gap: 15px;
+    padding-left: 30%;
+}
+
+.cell {
+    width: 120px;
+    height: 120px;
+    background-color: #2A2A5E;
+    border: 3px solid #FFD700;
+    font-size: 2.5em;
+    color: #FFD700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cell:hover {
+    background-color: #3C3C7E;
+    transform: scale(1.05);
+}
+
+.restart-btn {
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-size: 1.2em;
+    background-color: #E94560;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.restart-btn:hover {
+    background-color: #F07B9C;
+    transform: scale(1.05);
+}
+
+/* أنماط للصفحات المختلفة */
+.pagination {
+    margin: 30px auto;
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+
+.page-item {
+    font-size: 1.2em;
+}
+
+.page-link {
+    color: #E94560;
+    padding: 10px 15px;
+    background-color: #24243E;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.page-link:hover {
+    background-color: #E94560;
+    color: #FFFFFF;
+}
+
+.page-item.active .page-link {
+    background-color: #FFD700;
+    color: #f0d90c;
+}
+
+/* أنماط للنماذج */
+form {
+   
+    padding: 30px;
+    border-radius: 10px;
+   
+}
+
+form label {
+    display: block;
+    color: #FFD700;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+}
+
+form input[type="text"], form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border: none;
+    font-size: 16px;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #E94560;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+form button:hover {
+    background-color: #F07B9C;
+    transform: scale(1.05);
+}
+
+
+/* تنسيق صفحة تسجيل الدخول والتسجيل */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    background-color: #1E1E2F;
+}
+
+.auth-form {
+    background-color: #24243E;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.auth-form h2 {
+    margin-bottom: 30px;
+    color: #FFD700;
+}
+
+.auth-form .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.auth-form label {
+    display: block;
+    color: #FFD700;
+    margin-bottom: 5px;
+}
+
+.auth-form input[type="text"],
+.auth-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: #2A2A5E;
+    color: #FFF;
+}
+
+.auth-form input[type="text"]::placeholder,
+.auth-form input[type="password"]::placeholder {
+    color: #BBB;
+}
+
+.auth-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #E94560;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.auth-form button:hover {
+    background-color: #F07B9C;
+    transform: scale(1.05);
+}
+
+
+.games-container {
+    padding: 50px;
+    text-align: center;
+}
+
+.games-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.game-item {
+    background-color: #2A2A5E;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.game-item h3 {
+    color: #FFD700;
+    margin-bottom: 15px;
+}
+
+.game-item a {
+    background-color: #E94560;
+    color: #FFF;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.game-item a:hover {
+    background-color: #F07B9C;
+}
+
+.game-item:hover {
+    transform: scale(1.05);
+}
+
+.card{
+    background-color: #1a1f45 !important;
+}
+
+
+.nav-link{
+    color: yellow !important;
+}
