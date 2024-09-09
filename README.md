@@ -1,0 +1,1 @@
+This site is for the XO game and allows the user to create accounts and log in. Each user can create a private room and give the room name to his friend. His friend searches for the room and enters. When the number of people in the room reaches 2, no additional people are allowed to enter. The movements are transferred between players in real time.
